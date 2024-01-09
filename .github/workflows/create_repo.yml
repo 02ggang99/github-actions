@@ -18,6 +18,7 @@ on:
 
 jobs:
   create-repo-automation:
+    timeout-minutest: 1
     runs-on: ubuntu-latest
     steps:
     - name: gh auth login
@@ -25,4 +26,4 @@ jobs:
         echo ${{ secrets.PRESONAL_ACCESS_TOKEN }} | gh auth login --with-token
     - name: create-repo
       run: |
-        gh repo create ggang99-action/${{ inputs.prefix }}-${{ inputs.name }} --public --add-readme
+        gh repo create 02ggang99-action/${{ inputs.prefix }}-${{ inputs.name }} --public --add-readme
