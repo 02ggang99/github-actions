@@ -18,8 +18,8 @@ on:
 
 jobs:
   create-repo-automation:
-    timeout-minutest: 1
     runs-on: ubuntu-latest
+    timeout-minutest: 1
     steps:
     - name: gh auth login
       run: |
