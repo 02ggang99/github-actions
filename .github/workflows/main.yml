@@ -49,3 +49,9 @@ jobs:
         run: |
           echo '${{ secrets.DOCKER_ENV }}' >> .env
 
+      - name: Create application.yml
+        working-directory: ./src/main/resources
+        env:
+          APPLICATION_YML: ${{ secrets.APPLICATION_YML }}
+        run: |
+          echo '${{ secrets.APPLICATION_YML }}' >> application.yml
