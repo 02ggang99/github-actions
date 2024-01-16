@@ -31,3 +31,15 @@ jobs:
         with:
           java-version: 17
           distribution: temurin
+
+      - name: Create Cache Docker Image Directory
+        run: mkdir -p ~/db-docker-image
+
+      - name: Pull DB Image From ECR
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        run: |
+          docker pull $ECR_REGISTRY/doo-re-dev:${{ secrets.KEEPER_DB_TAG }}
+          docker save -o \
+            ~/db-docker-image/doo-re-db.tar \
+            $ECR_REGISTRY/doo-re-dev:${{ secrets.KEEPER_DB_TAG }}
