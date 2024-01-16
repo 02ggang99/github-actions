@@ -43,3 +43,9 @@ jobs:
           docker save -o \
             ~/db-docker-image/doo-re-db.tar \
             $ECR_REGISTRY/doo-re-dev:${{ secrets.DOORE_DB_TAG }}
+
+      - name: Create Docker Env File
+        working-directory: ./docker
+        run: |
+          echo '${{ secrets.DOCKER_ENV }}' >> .env
+
